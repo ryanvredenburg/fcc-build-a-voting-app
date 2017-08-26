@@ -139,7 +139,7 @@ module.exports = function (app, passport) {
   app.route('/myPolls')
 		.get(isLoggedIn, function (req, res) {
   Poll.find({creator_id: req.user.id}, function (error, poll) {
-    res.render('polls', {polls: poll, isAuthenticated: req.isAuthenticated()})
+    res.render('myPolls', {polls: poll, isAuthenticated: req.isAuthenticated()})
   })
 })
 

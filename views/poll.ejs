@@ -1,7 +1,8 @@
 <% include header.ejs %>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
+<div class="row marketing">
+  <div class="col-lg-6">
 <h1>
   <%= poll.question %>
 </h1>
@@ -14,7 +15,7 @@
     <input type="submit" value="Vote!"><br>
   </form>            
 
-    <div id="canvas-holder" style="width:40%">
+    <div id="canvas-holder" >
         <canvas id="chart-area" />
     </div>
 
@@ -27,6 +28,8 @@
     <textarea id="options" name="options" rows="10"></textarea><br>
     <input type="submit" value="Add Options"><br>
 </form>
+  </div>
+</div>
 <% } %>
 
 <script>
