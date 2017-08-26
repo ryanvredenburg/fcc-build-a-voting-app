@@ -1,0 +1,30 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="/public/jumbotron-narrow.css" rel="stylesheet">
+
+<div class="container">
+  <div class="header clearfix">
+
+
+  <nav>
+  <ul class="nav nav-pills pull-right">
+    <li role="presentation"><a href="/newPoll">New Poll</a></li>
+    <li role="presentation"><a href="/polls">All Polls</a></li>
+    <% if (isAuthenticated){ %>
+      <li role="presentation"><a href="/myPolls">My Polls</a></li>
+      <li role="presentation"><a href="/logout">Logout</a></li>
+    <% } else { %>
+      <li role="presentation"><a href="/login">Login</a></li>
+    <% } %>
+      
+
+  </ul>
+  </nav>
+  <h3 class="text-muted">
+    <% if (isAuthenticated){ %>
+      Welcome, <span id="display-name"></span>!
+    <% }else{ %>
+      Welcome, Anonymous Coward!
+    <% } %>
+  </h3>
+  </div>
+  <div class="jumbotron">

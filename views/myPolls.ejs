@@ -1,0 +1,27 @@
+<% include header.ejs %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Poll Question</th>
+      <th>Aggregate Votes</th>
+      <% if (isAuthenticated){ %>
+        <th>Delete</th>
+      <% } %> 
+    </tr>
+  </thead>
+  <tbody>
+  <% for(let i=0;i< polls.length;i++){ %>
+    <tr>
+        <td><a href="polls/<%= polls[i]._id %>"/a><%= polls[i].question %></td>
+        <td>Total Votes: <%= polls[i].votes %></td>
+        <% if (isAuthenticated){ %>
+          <td><a href="/polls/delete/<%= polls[i]._id %>">Delete Poll</a></td>
+        <% } %> 
+  </tr>
+<%}%>
+  </tbody>
+</table>
+
+
+
+<% include footer.ejs %>

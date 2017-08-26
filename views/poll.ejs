@@ -1,0 +1,73 @@
+<% include header.ejs %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<div class="row marketing">
+  <div class="col-lg-6">
+<h1>
+  <%= poll.question %>
+</h1>
+  <form action="/polls/<%= poll._id %>" method="post">
+    <select name="voteOption">
+      <% for(var i=0;i< poll.options.length;i++){ %>
+        <option value= '<%= poll.options[i]._id %>' > <%= poll.options[i].name %> </option>
+      <%}%>
+    </select>
+    <input type="submit" value="Vote!"><br>
+  </form>            
+
+    <div id="canvas-holder" >
+        <canvas id="chart-area" />
+    </div>
+
+<% if (isAuthenticated){ %>
+<p>
+  If you don't like these options, you can add more here:
+</p>
+<form action="/polls/addoptions/<%=poll._id%>" method="post">
+    <label>Options (One per line): </label><br>
+    <textarea id="options" name="options" rows="10"></textarea><br>
+    <input type="submit" value="Add Options"><br>
+</form>
+  </div>
+</div>
+<% } %>
+
+<script>
+<%
+function getChartColors(count){
+  var colors = []
+  for (var i = 0; i < count; i++){
+    colors.push('\"'+ getRandomColor() + '\"')
+  }
+  return colors
+}  
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}  
+%>
+  
+var context = document.getElementById('chart-area').getContext('2d');
+var data = {
+    datasets: [{
+        backgroundColor: [<%- getChartColors(chartData.length) %>],
+        data: [<%= chartData %>]
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [<%- chartLabels %>]
+};  
+var myDoughnutChart = new Chart(context, {
+    type: 'doughnut',
+    data: data,
+});
+
+
+</script>
+
+
+<% include footer.ejs %>

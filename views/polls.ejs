@@ -1,0 +1,21 @@
+<% include header.ejs %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Poll Question</th>
+      <th>Aggregate Votes</th>  
+    </tr>
+  </thead>
+  <tbody>
+  <% for(let i=0;i< polls.length;i++){ %>
+    <tr>
+        <td><a href="polls/<%= polls[i]._id %>"/a><%= polls[i].question %></td>
+        <td>Total Votes: <%= polls[i].votes %></td>          
+  </tr>
+<%}%>
+  </tbody>
+</table>
+
+
+
+<% include footer.ejs %>
