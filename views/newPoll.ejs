@@ -1,0 +1,11 @@
+<% include header.ejs %>
+<form action="/newPoll/" method="post">
+    <h1>Make a new poll!</h1><br>
+    <label>Poll Question: </label><br>
+    <input id="question" name="question" type="text" ><br>
+    <label>Options (One per line): </label><br>
+    <textarea id="options" name="options" rows="10"></textarea><br>
+    <input type="submit" value="Create Poll"><br>
+</form>
+
+<% include footer.ejs %>

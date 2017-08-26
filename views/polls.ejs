@@ -1,0 +1,17 @@
+<% include header.ejs %>
+<table>
+  <% for(let i=0;i< polls.length;i++){ %>
+    <tr>
+        <td><%= polls[i].question %></td>
+        <td>Total Votes: <%= polls[i].votes %></td>
+        <td><a href="polls/<%= polls[i]._id %>">VIEW POLL</a></td>
+        <% if (isAuthenticated){ %>
+          <td><a href="/polls/delete/<%= polls[i]._id %>">Delete Poll</a></td>
+        <% } %>
+            
+  </tr>
+<%}%>
+</table>
+
+
+<% include footer.ejs %>

@@ -1,0 +1,26 @@
+	<head>
+		<title>FCC Voting App Backend Project</title>
+		
+		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<header>
+    <% if (isAuthenticated){ %>
+      <p>Welcome, <span id="display-name"></span>!</p>
+    <% }else{ %>
+      <p>Welcome, Anonymous Coward!</p>
+    <% } %>
+		
+    <a class="menu" href="/newPoll">New Poll</a>
+    <a class="menu" href="/polls">All Polls</a>
+    <% if (isAuthenticated){ %>
+      <a class="menu" href="/myPolls">My Polls</a>
+    <% } %>
+		<p>|</p>
+    <% if (isAuthenticated){ %>
+      <a class="menu" href="/logout">Logout</a>
+    <% }else{ %>
+      <a class="menu" href="/login">Login</a>
+    <% } %>
+		
+	</header>
